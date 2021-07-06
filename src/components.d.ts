@@ -14,6 +14,8 @@ export namespace Components {
     }
     interface AppRoot {
     }
+    interface AppTimer {
+    }
 }
 declare global {
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
@@ -34,10 +36,17 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLAppTimerElement extends Components.AppTimer, HTMLStencilElement {
+    }
+    var HTMLAppTimerElement: {
+        prototype: HTMLAppTimerElement;
+        new (): HTMLAppTimerElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "app-timer": HTMLAppTimerElement;
     }
 }
 declare namespace LocalJSX {
@@ -48,10 +57,13 @@ declare namespace LocalJSX {
     }
     interface AppRoot {
     }
+    interface AppTimer {
+    }
     interface IntrinsicElements {
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
+        "app-timer": AppTimer;
     }
 }
 export { LocalJSX as JSX };
@@ -61,6 +73,7 @@ declare module "@stencil/core" {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "app-timer": LocalJSX.AppTimer & JSXBase.HTMLAttributes<HTMLAppTimerElement>;
         }
     }
 }

@@ -1,4 +1,6 @@
 import { Component, h } from '@stencil/core';
+import Logo from '../../assets/svg/logo.svg';
+
 
 @Component({
   tag: 'app-root',
@@ -8,9 +10,11 @@ import { Component, h } from '@stencil/core';
 export class AppRoot {
   render() {
     return (
-      <div>
+      <div class="root-block">
         <header>
-          <h1>Stencil App Starter</h1>
+          <img src={Logo} alt='' class="logo" />
+          {/*<Logo />*/}
+          <h1>Pomodoro timer</h1>
         </header>
 
         <main>
@@ -18,9 +22,14 @@ export class AppRoot {
             <stencil-route-switch scrollTopOffset={0}>
               <stencil-route url="/" component="app-home" exact={true} />
               <stencil-route url="/profile/:name" component="app-profile" />
+              <stencil-route url="/timer" component="app-timer" exact={true}/>
             </stencil-route-switch>
           </stencil-router>
         </main>
+
+        <footer>
+          &copy; <a href='https://github.com/Knyazik01' target="_blank" title="GitHub account">Knyazik01</a>
+        </footer>
       </div>
     );
   }
