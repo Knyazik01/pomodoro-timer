@@ -1,4 +1,4 @@
-import { Component, h, Listen, State } from '@stencil/core';
+import { Component, h, State } from '@stencil/core';
 import { TimerCountdown } from './timer-countdown/timer-countdown';
 
 @Component({
