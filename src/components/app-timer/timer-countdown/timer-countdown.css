@@ -1,0 +1,10 @@
+.timer-countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}
+
+.separator {
+  margin: 0 0.5rem;
+}

@@ -1,4 +1,5 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, Listen, State } from '@stencil/core';
+import { TimerCountdown } from './timer-countdown/timer-countdown';
 
 @Component({
   tag: "app-timer",
@@ -7,39 +8,62 @@ import { Component, h, State } from '@stencil/core';
 })
 export class AppTimer {
   @State() time: number = 7494;
+  @State() showCountDown: boolean = false;
+  timer;
 
-  seconds: number = this.time % 60;
-  minutes: number = (this.time - this.seconds) / 60 % 60;
-  hours: number = (((this.time - this.seconds) / 60) - this.minutes) / 60;
+/*  connectedCallback = () => {
 
-  connectedCallback() {
-    window.setInterval(() => {
+  }*/
+
+  clearInterval = () => {
+    window.clearInterval(this.timer)
+  }
+  stopTimer = () => {
+    // console.log("stop");
+    this.showCountDown = false;
+    this.clearInterval();
+    this.time = 0;
+  }
+
+  startTimer(e) {
+    this.clearInterval();
+    const {target} = e;
+    const {dataset: {time}} = target;
+    // console.log([time]);
+    if(isNaN(+time)) return;
+    console.log(time);
+    this.showCountDown = true;
+    this.time = +time;
+    this.timer = window.setInterval(() => {
       this.time--;
+      if (this.time <= 0) {
+        this.stopTimer();
+      }
     }, 1000);
   }
 
   render() {
-    let timeNow = this.time;
-    let seconds = timeNow % 60;
-    timeNow = (timeNow - seconds) / 60;
-    let minutes = timeNow % 60;
-    timeNow = (timeNow - minutes) / 60;
-    let hours = timeNow;
+    return (
+      <div class="main">
+        {this.showCountDown
+          ? <div class="timer-is-active">
+              <TimerCountdown time={this.time} />
+              <button onClick={this.stopTimer}>Stop Timer</button>
+            </div>
+          : <div>
+            <h1>CHOOSE YOUR TIMER</h1>
+            <div class="timer-time-buttons">
+              {/*<button onClick={this.startTimer} data-time={5}>5 sec</button>*/}
+              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={5}>5 sec</button>
+              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={5*60}>5 min</button>
+              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={10*60}>10 min</button>
+              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={15*60}>15 min</button>
+              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={20*60}>20 min</button>
+              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={30*60}>30 min</button>
+            </div>
+          </div>
 
-    return <div class="main">
-      <div class='hours'>
-        <button>+</button>
-        <div class='count'>{hours}</div>
-        <button>-</button>
-      </div>
-      <div class='minutes'>
-        <button>+</button>
-        <div class='count'>{minutes}</div>
-        <button>-</button></div>
-      <div class='seconds'>
-        <button>+</button>
-        <div class='count'>{seconds}</div>
-        <button>-</button></div>
-    </div>
+        }
+    </div>)
   }
 }
