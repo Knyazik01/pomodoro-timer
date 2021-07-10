@@ -1,0 +1,73 @@
+@import "src/assets/utils/variables";
+@import "timer-countdown/timer-countdown";
+
+.main {
+  width: 100%;
+  height: 100%;
+  background-color: #8cb4c9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-is-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin: 0 0 3rem;
+  text-align: center;
+  color: $white;
+}
+
+.timer-time-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.timer-time-button {
+  padding: 0;
+  width: 20rem;
+  height: 8rem;
+  font-size: 3rem;
+  background: $blue-violet;
+  color: $white;
+  border-radius: 1.5rem;
+  cursor: pointer;
+
+  &, &:focus {
+    outline: none;
+    border: none;
+  }
+
+  &:hover {
+    background: $violet;
+  }
+}
+
+
+
+.stop-timer {
+  display:block;
+  width: 20rem;
+  height: 8rem;
+  font-size: 3rem;
+  border-radius: 1.5rem;
+  background: $red;
+  color: $white;
+  margin-top: 2rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $red-light;
+  }
+
+  &, &:focus {
+    border: none;
+    outline: none;
+  }
+}

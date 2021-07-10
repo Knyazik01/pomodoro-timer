@@ -1,0 +1,57 @@
+@import "src/assets/utils/variables";
+
+.timer-countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25rem;
+  transition: all 0.3s;
+  color: $blue;
+  &.red {
+    color: $red;
+  }
+
+  &.big-text {
+    font-size: 30rem;
+    transition: all 0.3s;
+  }
+
+  @keyframes slidein {
+    0% {
+      color: $red;
+    }
+
+    17% {
+      color: $red-dark;
+    }
+
+    34% {
+      color: $red;
+    }
+
+    51% {
+      color: $red-dark;
+    }
+
+    68% {
+      color: $red;
+    }
+
+    85% {
+      color: $red-dark;
+    }
+
+    100% {
+      color: $red;
+    }
+  }
+
+  &.time-ended {
+    animation-duration: 0.5s;
+    animation-name: slidein;
+  }
+}
+
+.separator {
+  margin: 0 0.5rem;
+}
