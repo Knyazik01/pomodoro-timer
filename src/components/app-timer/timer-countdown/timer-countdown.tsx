@@ -15,7 +15,7 @@ export const TimerCountdown: FunctionalComponent<CountdownProps> = ({time}) => {
   let hours = timeNow;
 
   return (
-    <div class="timer-countdown">
+    <div class={`timer-countdown ${time <= 5 ? 'red' : ''} ${time <=5 && time > 0 ? 'big-text': ''} ${time === 0 ? 'time-ended' : ''}`}>
       <div class='hours'>
         <div class='count'>{formatNumberToTwoDigits(hours)}</div>
       </div>

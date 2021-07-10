@@ -15,6 +15,7 @@ export namespace Components {
     interface AppRoot {
     }
     interface AppTimer {
+        "src": string;
     }
 }
 declare global {
@@ -58,6 +59,7 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface AppTimer {
+        "src"?: string;
     }
     interface IntrinsicElements {
         "app-home": AppHome;

@@ -4,7 +4,7 @@ import Logo from '../../assets/svg/logo.svg';
 
 @Component({
   tag: 'app-root',
-  styleUrl: 'app-root.css',
+  styleUrl: 'app-root.scss',
   shadow: true,
 })
 export class AppRoot {
@@ -21,7 +21,6 @@ export class AppRoot {
           <stencil-router>
             <stencil-route-switch scrollTopOffset={0}>
               <stencil-route url="/" component="app-home" exact={true} />
-              <stencil-route url="/profile/:name" component="app-profile" />
               <stencil-route url="/timer" component="app-timer" exact={true}/>
             </stencil-route-switch>
           </stencil-router>
