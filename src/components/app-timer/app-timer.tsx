@@ -1,5 +1,5 @@
 import { Component, getAssetPath, h, Prop, State } from '@stencil/core';
-import { TimerCountdown } from './timer-countdown/timer-countdown';
+import { AppTimerCountdown } from '../app-timer-countdown/app-timer-countdown';
 
 @Component({
   tag: "app-timer",
@@ -74,8 +74,7 @@ export class AppTimer {
       <div class="main">
         {this.showCountDown
           ? <div class="timer-is-active">
-              <TimerCountdown time={this.time} />
-              <button onClick={this.stopTimer} class="stop-timer">Stop Timer</button>
+              <AppTimerCountdown time={this.time} stopTimer={this.stopTimer}/>
             </div>
           : <div>
             <h1>CHOOSE YOUR TIMER</h1>
