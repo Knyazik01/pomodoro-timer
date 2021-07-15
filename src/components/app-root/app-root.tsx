@@ -11,13 +11,16 @@ export class AppRoot {
   render() {
     return (
       <div class="root-block">
-        <header>
-          <img src={Logo} alt='' class="logo" />
-          {/*<Logo />*/}
-          <h1>Pomodoro timer</h1>
+        <header class="header">
+          <stencil-route-link url="/" class='header__logo-link'>
+            <div class='header__logo-icon-block'>
+              <img src={Logo} alt='' class="header__logo" />
+              <h1 class="header__logo-text">Pomodoro Timer</h1>
+            </div>
+          </stencil-route-link>
         </header>
 
-        <main>
+        <main class="main">
           <stencil-router>
             <stencil-route-switch scrollTopOffset={0}>
               <stencil-route url="/" component="app-home" exact={true} />
@@ -26,8 +29,9 @@ export class AppRoot {
           </stencil-router>
         </main>
 
-        <footer>
-          &copy; <a href='https://github.com/Knyazik01' target="_blank" title="GitHub account">Knyazik01</a>
+        <footer class="footer">
+          &copy; <a href='https://github.com/Knyazik01' class="footer__git-hub-link"
+                    target="_blank" title="GitHub account">Knyazik01</a>
         </footer>
       </div>
     );

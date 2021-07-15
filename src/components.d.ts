@@ -5,17 +5,17 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
 export namespace Components {
     interface AppHome {
-    }
-    interface AppProfile {
-        "match": MatchResults;
     }
     interface AppRoot {
     }
     interface AppTimer {
         "src": string;
+    }
+    interface AppTimerCountdown {
+        "stopTimer": () => void;
+        "time": number;
     }
 }
 declare global {
@@ -24,12 +24,6 @@ declare global {
     var HTMLAppHomeElement: {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
-    };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
-    }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
     };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
@@ -43,29 +37,36 @@ declare global {
         prototype: HTMLAppTimerElement;
         new (): HTMLAppTimerElement;
     };
+    interface HTMLAppTimerCountdownElement extends Components.AppTimerCountdown, HTMLStencilElement {
+    }
+    var HTMLAppTimerCountdownElement: {
+        prototype: HTMLAppTimerCountdownElement;
+        new (): HTMLAppTimerCountdownElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
         "app-timer": HTMLAppTimerElement;
+        "app-timer-countdown": HTMLAppTimerCountdownElement;
     }
 }
 declare namespace LocalJSX {
     interface AppHome {
-    }
-    interface AppProfile {
-        "match"?: MatchResults;
     }
     interface AppRoot {
     }
     interface AppTimer {
         "src"?: string;
     }
+    interface AppTimerCountdown {
+        "stopTimer"?: () => void;
+        "time"?: number;
+    }
     interface IntrinsicElements {
         "app-home": AppHome;
-        "app-profile": AppProfile;
         "app-root": AppRoot;
         "app-timer": AppTimer;
+        "app-timer-countdown": AppTimerCountdown;
     }
 }
 export { LocalJSX as JSX };
@@ -73,9 +74,9 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-timer": LocalJSX.AppTimer & JSXBase.HTMLAttributes<HTMLAppTimerElement>;
+            "app-timer-countdown": LocalJSX.AppTimerCountdown & JSXBase.HTMLAttributes<HTMLAppTimerCountdownElement>;
         }
     }
 }

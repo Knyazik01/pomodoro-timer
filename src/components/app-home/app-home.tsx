@@ -9,17 +9,12 @@ export class AppHome {
   render() {
     return (
       <div class="app-home">
-        <p>
-          Welcome to the Stencil App Starter. You can use this starter to build entire apps all with web components using Stencil! Check out our docs on{' '}
-          <a href="https://stenciljs.com">stenciljs.com</a> to get started.
-        </p>
-
-        <stencil-route-link url="/profile/stencil">
-          <button>Profile page</button>
-        </stencil-route-link>
+        <h1 class="app-home__title">
+          Welcome to the Pomodoro Timer App.<br />Let start tracking time!
+        </h1>
 
         <stencil-route-link url="/timer">
-          <button>Timer page</button>
+          <button class="app-home__button">Timer page</button>
         </stencil-route-link>
       </div>
     );

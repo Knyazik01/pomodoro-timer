@@ -1,57 +1,80 @@
 @import "../../assets/utils/variables";
+@import "../../assets/utils/mixins";
 
-.timer-countdown {
+.timer-page__single-timer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 25rem;
-  transition: all 0.3s;
-  color: $blue;
-  &.red {
-    color: $red;
-  }
 
-  &.big-text {
-    font-size: 30rem;
+  &__countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25rem;
     transition: all 0.3s;
-  }
-
-  @keyframes slidein {
-    0% {
+    color: $blue;
+    &.red {
       color: $red;
     }
 
-    17% {
-      color: $red-dark;
+    &.big-text {
+      font-size: 30rem;
+      transition: all 0.3s;
     }
 
-    34% {
-      color: $red;
+    @keyframes to-biger {
+      0% {
+        color: $red;
+      }
+
+      17% {
+        color: $red-dark;
+      }
+
+      34% {
+        color: $red;
+      }
+
+      51% {
+        color: $red-dark;
+      }
+
+      68% {
+        color: $red;
+      }
+
+      85% {
+        color: $red-dark;
+      }
+
+      100% {
+        color: $red;
+      }
     }
 
-    51% {
-      color: $red-dark;
+    &.time-ended {
+      animation-duration: 0.5s;
+      animation-name: to-biger;
     }
 
-    68% {
-      color: $red;
+    &__separator {
+      margin: 0 0.5rem;
     }
 
-    85% {
-      color: $red-dark;
-    }
+    &__stop-timer {
+      @include button-default-stiles;
 
-    100% {
-      color: $red;
-    }
-  }
+      display:block;
+      background: $red;
+      color: $white;
+      margin-top: 2rem;
 
-  &.time-ended {
-    animation-duration: 0.5s;
-    animation-name: slidein;
+      &:hover {
+        background-color: $red-light;
+      }
+    }
   }
 }
 
-.separator {
-  margin: 0 0.5rem;
-}
+

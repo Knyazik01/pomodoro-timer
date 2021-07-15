@@ -9,7 +9,7 @@
   right: 0;
 }
 
-header {
+.header {
   background: $blue-violet;
   color: $white;
   height: 6rem;
@@ -18,22 +18,42 @@ header {
   box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.26);
   padding: 1rem 2rem;
   box-sizing: border-box;
+
+  &__logo{
+    width: 3rem;
+    height: 3rem;
+
+    &-link {
+      text-decoration: none;
+    }
+    &-icon-block {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    &-text {
+      font-size: 2rem;
+      margin: 0;
+      font-weight: 500;
+      color: $white;
+      padding: 0 12px;
+      text-decoration: none;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
 }
 
-h1 {
-  font-size: 2rem;
-  margin: 0;
-  font-weight: 500;
-  color: $white;
-  padding: 0 12px;
+.main {
+  height: calc(100% - 10rem);
+  overflow: auto;
+  overflow-x: hidden;
 }
 
-.logo {
-  width: 3rem;
-  height: 3rem;
-}
-
-footer {
+.footer {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -45,15 +65,9 @@ footer {
   align-items: center;
   padding: 1rem 1.5rem;
   box-sizing: border-box;
-}
 
-main {
-  height: calc(100% - 10rem);
-  overflow: auto;
-  overflow-x: hidden;
-}
-
-footer a {
-  color: inherit;
-  margin-left: 1rem;
+  &__git-hub-link {
+    color: inherit;
+    margin-left: 1rem;
+  }
 }

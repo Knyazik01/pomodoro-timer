@@ -1,0 +1,19 @@
+@import "variables";
+
+@mixin button-default-stiles {
+  width: 20rem;
+  height: 8rem;
+  font-size: 3rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+
+  &, &:focus {
+    border: none;
+    outline: none;
+  }
+
+  &:hover {
+    box-shadow: 0 0.3rem 0.6rem rgba($black, 0.1), 0 0.1rem 0.3rem rgba($black, 0.1);
+    transform: translateY(0.1rem);
+  }
+}

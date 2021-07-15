@@ -1,5 +1,15 @@
 import { Component, getAssetPath, h, Prop, State } from '@stencil/core';
-import { AppTimerCountdown } from '../app-timer-countdown/app-timer-countdown';
+// import { AppTimerCountdown } from '../app-timer-countdown/app-timer-countdown';
+import { TimersGrid } from "./TimersGrid";
+
+const countdowns = [
+  {time: 10, text: "10 sec"},
+  {time: 5*60, text: "5 min"},
+  {time: 10*60, text: "10 min"},
+  {time: 15*60, text: "15 min"},
+  {time: 20*60, text: "20 min"},
+  {time: 30*60, text: "30 min"},
+];
 
 @Component({
   tag: "app-timer",
@@ -54,13 +64,10 @@ export class AppTimer {
     setTimeout(this.hideTimerAndStopSound, 1500);
   }
 
-  startTimer(e) {
+  startTimer(time) {
     this.clearInterval();
-    const {target} = e;
-    const {dataset: {time}} = target;
-    if(isNaN(+time)) return;
     this.showCountDown = true;
-    this.time = +time;
+    this.time = time;
     this.timer = window.setInterval(() => {
       this.time--;
       if (this.time <= 0) {
@@ -71,22 +78,10 @@ export class AppTimer {
 
   render() {
     return (
-      <div class="main">
+      <div class="timer-page">
         {this.showCountDown
-          ? <div class="timer-is-active">
-              <AppTimerCountdown time={this.time} stopTimer={this.stopTimer}/>
-            </div>
-          : <div>
-            <h1>CHOOSE YOUR TIMER</h1>
-            <div class="timer-time-buttons">
-              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={5*2}>10 sec</button>
-              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={5*60}>5 min</button>
-              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={10*60}>10 min</button>
-              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={15*60}>15 min</button>
-              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={20*60}>20 min</button>
-              <button class="timer-time-button" onClick={(e: UIEvent) => this.startTimer(e)} data-time={30*60}>30 min</button>
-            </div>
-          </div>
+          ? <app-timer-countdown time={this.time} stopTimer={this.stopTimer}/>
+          : <TimersGrid countdowns={countdowns} startTimer={(time) => this.startTimer(time)}/>
         }
     </div>)
   }
